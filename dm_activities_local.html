@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>DM Full Calendar Ex</title>
+  <link rel='stylesheet' type="text/css" href='css/fullcalendar.min.css' />
+  <link rel='stylesheet' type="text/css" href='css/fullcalendar.print.min.css' media='print' />
+  <link rel="stylesheet" type="text/css" href="semanticui/semantic.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+      font-size: 14px;
+    }
+
+    #calendar {
+      /*max-width: 900px;*/
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+
+    .fc-title {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .fc-time span {
+      font-size: 12px;
+    }
+
+    .fc-event-container {
+      padding: 5px !important;
+    }
+
+    .fc-event {
+      padding: 5px 10px;
+      border-color: #ddd;
+
+      .fc-content {
+        color: #444;
+      }
+    }
+
+    @media print {
+
+      #print,
+      #message {
+        display: none;
+      }
+
+      #calendar * {
+        visibility: visible;
+      }
+
+      #calendar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 5em;
+      }
+    }
+  </style>
+  <script type="text/javascript" language="javascript" src='js/moment.min.js'></script>
+  <script type="text/javascript" language="javascript" src='js/jquery.min.js'></script>
+  <script type="text/javascript" language="javascript" src='js/fullcalendar.min.js'></script>
+  <script type="text/javascript" language="javascript" src='dm_activities_local.js'></script>
+  <script type="text/javascript" language="javascript" src="semanticui/semantic.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      loadCalendar()
+    }); //-> end document ready
+  </script>
+</head>
+
+<body>
+  <div class="ui segment">
+    <h4 class="ui horizontal divider header">
+      <i class="users icon"></i>
+      DM Resource Manager for <span id="userName"></span>
+    </h4>
+    <div id="message" class="ui small info message transition">
+      <i class="close icon"></i>
+      <div class="header">
+        <i class="arrow alternate circle right icon"></i>
+        What to know
+      </div>
+      <ul class="list">
+        <li>Edit the html file and modify the dates from result array.</li>
+        <li>Dates currently are 02DEC2019, 04DEC2019 and 06DEC2019.</li>
+        <li>Drag and drop will output the date value in console</li>
+      </ul>
+    </div>
+
+    <div id="divDD" class="ui">
+      <select class="ui compact dropdown" id="usersDD">
+        <option value="">Select DM to filter</option>
+      </select>
+      <select class="ui compact dropdown" id="statusFilter">
+        <option value="">Filter by Status</option>
+      </select>
+      <!-- <button id="filterData" class="ui positive basic labeled tiny icon button"><i class="filter icon"></i>Filter</button>-->
+      <div class="ui vertical orange basic animated button" id="resetDropDown" tabindex="0">
+        <div class="hidden content">Reset</div>
+        <div class="visible content"><i class="undo icon"></i></div>
+      </div>
+      <div class="ui vertical gray basic animated button" id="print" tabindex="0" onclick="window.print();">
+        <div class="hidden content">Print</div>
+        <div class="visible content"><i class="print icon"></i></div>
+      </div>
+      <!--<button id="resetDropDown" class="ui orange basic labeled tiny icon button"><i class="undo icon"></i></button>-->
+      <!--<button id="print" class="ui grey basic labeled tiny icon button" style="display:none;" onclick="window.print();"><i class="print icon"></i>Print activities</button>-->
+    </div>
+
+  </div>
+
+  <div id='calendar'></div>
+</body>
+
+</html>
